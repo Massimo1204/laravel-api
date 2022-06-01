@@ -17,9 +17,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/', 'Guest\HomeController@index')->name('home');
-Route::get('/post/{post}', 'Guest\HomeController@show')->name('guest-post');
-
+Route::get('{any?}', function () {
+    return view("layouts.app");
+})->where('any', '.*');
 
 Route::middleware('auth')
     ->namespace('Admin')
@@ -29,3 +29,4 @@ Route::middleware('auth')
         Route::resource('posts', 'HomeController');
         Route::resource('categories', 'CategoryController');
 });
+

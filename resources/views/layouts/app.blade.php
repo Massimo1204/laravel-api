@@ -84,7 +84,11 @@
 
         <main class="py-4">
             @yield('content')
+            <div id="root"></div>
         </main>
+
     </div>
+    <script src="{{ asset('js/front.js') }}" defer></script>
+    
 </body>
 </html>
