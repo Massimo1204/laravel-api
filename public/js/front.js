@@ -1925,8 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: ['post']
@@ -2532,7 +2530,22 @@ var render = function () {
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(_vm.post.content))]),
         _vm._v(" "),
-        _c("ul", { staticClass: "float-right" }),
+        _c(
+          "ul",
+          { staticClass: "float-right" },
+          _vm._l(_vm.post.categories, function (category, index) {
+            return _c(
+              "li",
+              {
+                key: index + "category",
+                staticClass: "d-inline ml-3 ",
+                style: { color: category.color },
+              },
+              [_vm._v(_vm._s(category.name))]
+            )
+          }),
+          0
+        ),
       ]),
     ]
   )

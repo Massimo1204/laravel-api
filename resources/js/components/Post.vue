@@ -8,9 +8,7 @@
             <h3>{{ post.title }}</h3>
             <p>{{ post.content }}</p>
             <ul class="float-right">
-                <!-- @foreach ($post->categories as $category)
-                    <li class="d-inline ml-3 " style="color:{{$category->color}}">{{ $category->name }}</li>                            
-                @endforeach -->
+                <li v-for="(category, index) in post.categories" :key="index + 'category'" :style=" { color: category.color }" class="d-inline ml-3 " >{{ category.name }}</li>                            
             </ul>
         </div>
     </div>

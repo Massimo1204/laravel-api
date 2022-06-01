@@ -12,7 +12,8 @@ class apiController extends Controller
         $posts = Post::paginate(5);
         
         foreach ($posts as $key => $post) {
-            $authors[] = $post->user;
+            $post->user;
+            $post->categories;
         };
 
         return response()->json($posts);
