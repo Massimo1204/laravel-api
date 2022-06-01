@@ -9,11 +9,13 @@ use App\Models\Post;
 class apiController extends Controller
 {
     public function index(){
-        $posts = Post::all();
-        return response()->json([
-            'success' => true,
-            'results' => $posts
-        ]);
+        $posts = Post::paginate(5);
+        
+        foreach ($posts as $key => $post) {
+            $authors[] = $post->user;
+        };
+
+        return response()->json($posts);
     }
 
     public function show($id){
