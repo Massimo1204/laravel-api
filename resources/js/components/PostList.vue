@@ -5,9 +5,15 @@
         <Post v-for="(post, index) in posts" :key="index + 'post'" :post="post" />
         <nav >
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li v-if="pagination.currentPage > 1" class="page-item">
+                    <a class="page-link" href="#" @click="getPosts(pagination.currentPage - 1)">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">{{pagination.currentPage}}</a>
+                </li>
+                <li v-if="pagination.currentPage < pagination.lastPage" class="page-item">
+                    <a class="page-link" href="#" @click="getPosts(pagination.currentPage + 1)">Next</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -30,8 +36,8 @@ export default {
         }
     },
     methods: {
-        getPosts() {
-            axios.get("http://localhost:8000/api/posts")
+        getPosts(page) {
+            axios.get("http://localhost:8000/api/posts?page=" + page)
                 .then((result)=>{
                     this.posts = result.data.data;
                     const {current_page , last_page } = result.data;
@@ -43,7 +49,7 @@ export default {
         },
     },
     created() {
-        this.getPosts();
+        this.getPosts(1);
     }
 }
 </script>
