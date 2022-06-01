@@ -17,7 +17,7 @@
     <title>Presspress Guest Home</title>
 </head>
 <body>
-    <h1>guessts home</h1>
+    <h1 class="text-center border-info border-bottom pb-4">Home</h1>
     <div id="root"></div>
 
     <script src="{{ asset('js/front.js') }}" defer></script>
